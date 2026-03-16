@@ -4,7 +4,7 @@
 
 | Feature | Details |
 |---|---|
-| **Flash Feed** | InShorts-style full-screen swipeable reader at `/flash-feed` |
+| **Flash Feed** | Full-screen swipeable reader at `/flash-feed` |
 | **War Live Feed** | Timestamped conflict news timeline (tab inside Flash Feed) |
 | **India News** | Knowivate API — free Indian news, no key needed |
 | **SQLite Backend** | Express server caches all articles — quota used only by scheduler, never by users |
