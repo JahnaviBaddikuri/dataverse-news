@@ -1,0 +1,461 @@
+/* =============================================================
+   src/styles/globals.css
+   
+   DESIGN SYSTEM for Dataverse News
+   - CSS Custom Properties (variables)
+   - Global resets
+   - Typography scale
+   - Utility classes
+   - Animations & transitions
+   ============================================================= */
+
+/* ── Google Fonts are loaded in index.html ────────────────── */
+
+/* ── CSS Variables (Design Tokens) ───────────────────────── */
+:root {
+  /* COLOR PALETTE
+     Deep navy + warm cream = editorial trustworthy feel
+     Accent: electric amber (journalistic energy)
+  */
+  --color-bg-primary:    #0a0f1e;   /* Deep navy — main background */
+  --color-bg-secondary:  #0f1629;   /* Slightly lighter navy — cards */
+  --color-bg-elevated:   #162040;   /* Elevated surfaces — hover states */
+  --color-bg-glass:      rgba(15, 22, 41, 0.85); /* Glassmorphism bg */
+
+  --color-surface-1:     #111827;   /* Card surface */
+  --color-surface-2:     #1a2540;   /* Raised card surface */
+
+  --color-accent:        #f59e0b;   /* Amber — primary accent */
+  --color-accent-dim:    rgba(245, 158, 11, 0.15); /* Amber tint bg */
+  --color-accent-glow:   rgba(245, 158, 11, 0.3);  /* Ambient glow */
+
+  --color-text-primary:  #f1f5f9;   /* Near-white — main text */
+  --color-text-secondary:#94a3b8;   /* Muted blue-grey — subtitles */
+  --color-text-muted:    #4b5e7a;   /* Very muted — metadata */
+  --color-text-inverse:  #0a0f1e;   /* Dark text on light bg */
+
+  --color-border:        rgba(148, 163, 184, 0.1); /* Subtle borders */
+  --color-border-accent: rgba(245, 158, 11, 0.4);  /* Accent borders */
+
+  /* CATEGORY COLORS */
+  --cat-general:    #60a5fa; /* blue */
+  --cat-technology: #a78bfa; /* purple */
+  --cat-business:   #34d399; /* emerald */
+  --cat-sports:     #fb923c; /* orange */
+  --cat-health:     #f472b6; /* pink */
+  --cat-science:    #22d3ee; /* cyan */
+  --cat-entertainment: #facc15; /* yellow */
+  --cat-world:      #94a3b8; /* slate */
+
+  /* TYPOGRAPHY */
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'DM Sans', -apple-system, sans-serif;
+
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+  --text-5xl:  3rem;      /* 48px */
+
+  /* SPACING */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* LAYOUT */
+  --max-width: 1400px;
+  --header-height: 72px;
+
+  /* BORDER RADIUS */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-2xl: 24px;
+
+  /* SHADOWS */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.6);
+  --shadow-accent: 0 0 24px var(--color-accent-glow);
+
+  /* TRANSITIONS */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+}
+
+/* ── Global Reset ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  min-height: 100vh;
+  /* Subtle noise texture overlay for depth */
+  background-image: 
+    radial-gradient(ellipse at 20% 0%, rgba(245,158,11,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(96,165,250,0.04) 0%, transparent 60%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Typography Utilities ─────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+.text-xs    { font-size: var(--text-xs); }
+.text-sm    { font-size: var(--text-sm); }
+.text-base  { font-size: var(--text-base); }
+.text-lg    { font-size: var(--text-lg); }
+.text-xl    { font-size: var(--text-xl); }
+.text-2xl   { font-size: var(--text-2xl); }
+.text-3xl   { font-size: var(--text-3xl); }
+.text-4xl   { font-size: var(--text-4xl); }
+
+/* ── Layout Utilities ─────────────────────────────────────── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 var(--space-4); }
+}
+
+/* ── Keyframe Animations ──────────────────────────────────── */
+
+/* Fade up — used on card entry */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in — used on hero */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Shimmer — used on skeleton loaders */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* Pulse glow — used on live/breaking badge */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 6px rgba(239,68,68,0.6); }
+  50%       { box-shadow: 0 0 18px rgba(239,68,68,0.9); }
+}
+
+/* Ticker scroll — horizontal news ticker */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Slide in from right — page transitions */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Skeleton Loader Base ─────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-1) 25%,
+    var(--color-surface-2) 50%,
+    var(--color-surface-1) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ── Scrollbar Styling ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection {
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
+}
+/* =============================================================
+   LAYOUT & RESPONSIVE  (single source of truth — no duplicates)
+   ============================================================= */
+
+/* ── Base body overflow protection ── */
+body {
+  overflow-x: hidden;
+}
+
+/* ── Content layout: main column + sidebar ── */
+.content-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-8);
+  padding-top: var(--space-8);
+  align-items: start;
+  min-width: 0;
+}
+
+/* ── News grid: uniform 3-column cards ── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+/* ── Hero grid: height lives here so media queries can override it ── */
+.hero-grid {
+  height: 480px;
+}
+
+/* ── Hover & interaction (can't be done with inline styles) ── */
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-accent) !important;
+}
+.news-card:hover img { transform: scale(1.04); }
+
+footer a:hover            { color: var(--color-accent) !important; }
+.flash-feed-nav-btn:hover {
+  background: rgba(245,158,11,0.12) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+}
+nav button:hover:not([aria-current="page"]) {
+  color: var(--color-text-primary) !important;
+  background: var(--color-bg-elevated);
+}
+input[type="text"]:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px var(--color-accent-dim);
+}
+
+/* ── Article body HTML (Guardian content) ── */
+.article-body-content p {
+  margin-bottom: 1.4em;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+}
+.article-body-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 2em 0 0.6em; letter-spacing: -0.02em;
+}
+.article-body-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 1.6em 0 0.5em;
+}
+.article-body-content a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body-content blockquote {
+  border-left: 3px solid var(--color-accent);
+  margin: 1.5em 0; padding: 0.6em 1.2em;
+  background: var(--color-accent-dim);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-style: italic; color: var(--color-text-secondary);
+}
+.article-body-content figure { margin: 2em 0; text-align: center; }
+.article-body-content figure img {
+  max-width: 100%; height: auto;
+  border-radius: var(--radius-md); display: block; margin: 0 auto;
+}
+.article-body-content figcaption {
+  font-size: 0.8rem; color: var(--color-text-muted);
+  margin-top: 0.5em; font-style: italic;
+}
+.article-body-content ul, .article-body-content ol {
+  padding-left: 1.5em; margin-bottom: 1.2em;
+}
+.article-body-content li {
+  margin-bottom: 0.5em;
+  color: var(--color-text-secondary); line-height: 1.7;
+}
+.article-body-content strong, .article-body-content b {
+  color: var(--color-text-primary); font-weight: 600;
+}
+.article-body-content aside { display: none; }
+
+/* ── Keyframe animations (global) ── */
+@keyframes spin         { to { transform: rotate(360deg); } }
+@keyframes fadeIn       { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeUp       { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulseGlow    { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+
+/* ── Scrollbar hide ── */
+nav::-webkit-scrollbar { display: none; }
+
+/* ── Hamburger: hidden on desktop, shown on mobile ── */
+.hamburger-btn   { display: none !important; }
+.desktop-cat-nav { display: block; }
+
+/* ── Mobile hamburger icon lines ── */
+.hamburger-btn span span {
+  display: block;
+  width: 16px; height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* ── Slide-down animation for mobile menu ── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   TABLET  ≤ 1100px
+   ═══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .content-layout  { grid-template-columns: 1fr !important; }
+  .sidebar-col     { display: none !important; }
+  .news-grid       { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE  ≤ 768px
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Layout tokens */
+  :root { --header-height: 56px; }
+
+  /* Container padding */
+  .container { padding: 0 var(--space-3) !important; }
+
+  /* Header: show hamburger, hide desktop category nav */
+  .hamburger-btn   { display: flex !important; }
+  .desktop-cat-nav { display: none !important; }
+  .date-display    { display: none !important; }
+  .logo-text       { font-size: 1.05rem !important; }
+  .flash-feed-label { display: none !important; }
+  .flash-feed-nav-btn { padding: 5px 8px !important; }
+
+  /* ── Hero: now works because height is a CSS class, not inline ── */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    height: min(55vw, 300px) !important;
+  }
+  .hero-side-list { display: none !important; }
+
+  /* ── News grid: 2 cols on tablet/large mobile ── */
+  .news-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ═══════════════════════════════════════════
+   SMALL MOBILE  ≤ 600px
+   ═══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  /* News grid: single column */
+  .news-grid { grid-template-columns: 1fr !important; }
+
+  /* Taller hero on narrow phones so headline text has room */
+  .hero-grid { height: min(70vw, 280px) !important; }
+
+  /* Flash feed */
+  .flash-exit-btn-text { display: none; }
+
+  /* Article modal: full screen */
+  .article-modal {
+    width: 100vw !important; max-width: 100vw !important;
+    height: 100dvh !important; max-height: 100dvh !important;
+    border-radius: 0 !important;
+    top: 0 !important; left: 0 !important;
+    transform: none !important; margin: 0 !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   VERY SMALL  ≤ 400px
+   ═══════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .logo-text       { font-size: 0.95rem !important; }
+  .content-layout  { padding-top: var(--space-4) !important; }
+  .news-grid       { gap: var(--space-3) !important; }
+  .hero-grid       { height: 200px !important; }
+}
+
+/* ── Touch-friendly tap targets ── */
+@media (pointer: coarse) {
+  button, a, [role="button"] { min-height: 38px; }
+}
